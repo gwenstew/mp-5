@@ -12,9 +12,11 @@ export default async function handleUrl(req: NextApiRequest, res: NextApiRespons
         const urlData = await getUrlbyAlias(alias);
 
         if (!urlData) {
+            //alias not in db
             return res.status(404).json({message: "Alias not found"});
         }
 
+        //routing to original url
         return res.redirect(301, urlData.origURL);
     } catch (error) {
         console.error(error);

@@ -21,7 +21,7 @@ export default function InputUrl() {
             const data = await response.json();
   
             if (response.ok) {
-                console.log("API Response:", data);
+                //set the shortened url with my domain and alias
                 setShortenedUrl(data.shortenedUrl);  
             } else {
                 alert("Failed to shorten the URL. Try again.");
