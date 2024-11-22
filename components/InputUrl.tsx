@@ -1,8 +1,7 @@
 "use client"
 import { useState } from "react";
 import { Button, TextField, FormHelperText, Box, Typography } from "@mui/material";
-import {Textarea } from "@mui/joy";
-import createNewUrl from "@/lib/createNewUrl";
+
 
 export default function InputUrl() {
     const [originalURL, setOriginalURL] = useState("");
@@ -23,7 +22,7 @@ export default function InputUrl() {
   
             if (response.ok) {
                 console.log("API Response:", data);
-                setShortenedUrl(data.alias);  
+                setShortenedUrl(data.shortenedUrl);  
             } else {
                 alert("Failed to shorten the URL. Try again.");
             }
@@ -61,34 +60,35 @@ export default function InputUrl() {
                 <Button variant="contained" type="submit" disabled={!originalURL! || !alias}>
                     Shorten URL
                 </Button>
-            
+                
+                <div
+                    style={{
+                        marginTop: '20px',
+                        padding: '10px',
+                        backgroundColor: '#f9f9f9',
+                        border: '1px solid #ddd',
+                        borderRadius: '5px',
+                        minHeight: '50px',
+                    }}
+                >
+                    {shortenedUrl ? (
+                        <p>
+                            Shortened URL:{' '}
+                            <a
+                                href={shortenedUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ color: 'blue', textDecoration: 'underline' }}
+                            >
+                                {shortenedUrl}
+                            </a>
+                        </p>
+                    ) : (
+                        <p style={{ color: '#888' }}>Your shortened URL will appear here.</p>
+                    )}
+                </div>
 
-            <div
-                style={{
-                marginTop: '20px',
-                padding: '10px',
-                backgroundColor: '#f9f9f9',
-                border: '1px solid #ddd',
-                borderRadius: '5px',
-                minHeight: '50px', // Ensures the box is visible even if empty
-                }}
-            >
-            {shortenedUrl ? (
-                <p>
-                    Shortened URL:{" "}
-                    <a
-                        href={shortenedUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ color: 'blue', textDecoration: 'underline' }}
-                    >
-                        {shortenedUrl}
-                    </a>
-                </p>
-            ) : (
-                <p style={{ color: '#888' }}>Your shortened URL will appear here.</p> // Placeholder text
-                )}
-            </div>
+            
             </form>
         </div>
         );
