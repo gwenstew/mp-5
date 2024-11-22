@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getUrlbyAlias } from "@/lib/getUrlbyAlias";
-import { UrlProps } from "@/lib/type";
+//import { UrlProps } from "@/lib/type";
 
 export async function GET(req: NextRequest, context: { params: { alias?: string } }) {
     const  alias  = context.params?.alias;
