@@ -35,7 +35,6 @@ export default function InputUrl() {
 
     return (
         <div>
-            <h2>Shorten Your URL</h2>
             <form className="w-96 p-4 rounded-xl bg-sky-300"
                 onSubmit={(e) => {
                     e.preventDefault();
@@ -56,10 +55,10 @@ export default function InputUrl() {
                 value={alias}
                 onChange={(e) => setAlias(e.target.value)}
             />
-            <FormHelperText>Enter the URL and alias you'd like to shorten.</FormHelperText>
-                <Button variant="contained" type="submit" disabled={!originalURL! || !alias}>
-                    Shorten URL
-                </Button>
+            
+            <Button variant="contained" type="submit" disabled={!originalURL! || !alias}>
+                Shorten URL
+            </Button>
                 
             <Box
                 sx={{
