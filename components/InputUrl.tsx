@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import { Button, TextField, FormHelperText, Box, Typography } from "@mui/material";
+import { Button, TextField, FormHelperText, Box, Typography, Link } from "@mui/material";
 
 
 export default function InputUrl() {
@@ -61,34 +61,34 @@ export default function InputUrl() {
                     Shorten URL
                 </Button>
                 
-                <div
-                    style={{
-                        marginTop: '20px',
-                        padding: '10px',
-                        backgroundColor: '#f9f9f9',
-                        border: '1px solid #ddd',
-                        borderRadius: '5px',
-                        minHeight: '50px',
-                    }}
-                >
-                    {shortenedUrl ? (
-                        <p>
-                            Shortened URL:{' '}
-                            <a
-                                href={shortenedUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={{ color: 'blue', textDecoration: 'underline' }}
-                            >
-                                {shortenedUrl}
-                            </a>
-                        </p>
-                    ) : (
-                        <p style={{ color: '#888' }}>Your shortened URL will appear here.</p>
-                    )}
-                </div>
+            <Box
+                sx={{
+                    marginTop: 2,
+                    padding: 2,
+                    backgroundColor: '#f9f9f9',
+                    minHeight: '50px', 
+                    display: 'flex',
 
-            
+                }}
+            >
+                {shortenedUrl ? (
+                    <Typography variant="body1" color="text.primary">
+                        Shortened URL:{' '}
+                        <Link
+                            href={shortenedUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            sx={{ color: 'primary.main', textDecoration: 'underline' }}
+                        >
+                            {shortenedUrl}
+                        </Link>
+                    </Typography>
+                    ) : (
+                    <Typography variant="body2" color="text.secondary">
+                        Your shortened URL will appear here.
+                    </Typography>
+                )}
+            </Box>
             </form>
         </div>
         );
